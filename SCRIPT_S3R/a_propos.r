@@ -6,7 +6,7 @@
 
 
 .libPaths(paste(racine,"R/library/",sep=""))
-
+OK<-"ok"
 
 ###########################
 # INTERFACE ETAPE 1  ######
