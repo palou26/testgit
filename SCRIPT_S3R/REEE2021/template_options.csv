@@ -1,0 +1,42 @@
+LISTPARAM
+Version logiciel
+CALCUL
+LOGIN
+BASSIN
+FAIT LE
+Période Prélèvement (PCH) :
+Période Prélèvement (PS) :
+Période Prélèvement (BIO) :
+NOMBRE DE STATIONS :
+Calculer l’État Physico-chimique : 
+Calculer les Polluants Spécifiques : 
+Calculer l’État Biologique : 
+Calculer l’État Écologique : 
+Fichier de données PCH : 
+Fichier de données Bio :
+Fichier de données modélisées :
+Type de données modélisées :
+Fichier STATION utilisé
+Fichier MASSEDEAU utilisé
+Exclure les polluants non synthétiques de l'état PS final  :
+Calculer l'état écologique à la ME : 
+Respecter le code fraction PCH (support eau) : 
+Respecter le code fraction PS (support eau) : 
+Respecter l'unité des paramètres PCH : 
+Respecter l'unité des paramètres PS : 
+Respecter le nombre minimal de prélèvements PCH :
+Respecter le nombre minimal de prélèvements PS :
+Nombre minimal de prélèvements (PCH,PS) : 
+Méthode - Calcul de la moyenne annuelle PS : 
+Retrait des prélevements si LQ > NQEMA (PS)
+Retrait des prélevements si LQ aberrante (PS)
+Nombre de prélèvements avec LQ manquant (PS) :
+Nombre de stations manquantes dans la table STATION :
+Nombre de doublons dans les données PCH : 
+Nombre de doublons dans les données PS : 
+Nombre de doublons dans les données modélisées : 
+Nombre de doublons dans les données BIO : 
+Nombre de lignes avec RESULTATS null (PCH)
+Nombre de lignes avec RESULTATS null (Bio)
+Nombre de stations avec TypeFR non conforme
+Commentaires : 

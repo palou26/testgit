@@ -1,0 +1,234 @@
+NOM_COURT;NOM_LONG
+NAME;Nom de la masse d'eau
+EUCD;Numéro de la masse d'eau
+ETATCHIMME;Etat chimique de la masse d'eau
+ETATCHIMME_SSHAPUBI;Etat chimique de la masse d'eau sans HAP et ubiquiste
+NIVCONF;Niveau de confiance de l'état chimique de la masse d'eau
+CAS;Cas de figure expliquant le niveau de confiance
+STATION;Code station
+STATIONTXT;Code station complet au format texte
+REPRESENTATIVE;Station représentative de la masse d'eau
+ETATCHIM;Etat chimique de la station
+ETATCHIM_SSHAPUBI;Etat chimique de la station sans HAP et ubiquiste
+METAUX;Classe d'état de la famille : Métaux
+PEST;Classe d'état de la famille : Pesticides
+POLIND;Classe d'état de la famille : Polluants industriels
+AUTREPOL;Classe d'état de la famille : Autres polluants
+CD;Classe d'état de la substance : Cadmium
+HG;Classe d'état de la substance : Mercure
+NI;Classe d'état de la substance : Nickel
+PB;Classe d'état de la substance : Plomb
+ALACHLORE;Classe d'état de la substance : Alachlore
+ATRAZINE;Classe d'état de la substance : Atrazine
+CHLORFENVI;Classe d'état de la substance : Chlorfenvinphos
+DIURON;Classe d'état de la substance : Diuron
+ENDOSULFAN;Classe d'état de la substance : Endosulfan
+ETCHLORPY;Classe d'état de la substance : Ethylchlorpyriphos
+HCH;Classe d'état de la substance : Hexachlorocyclohexane
+ISOPROTURON;Classe d'état de la substance : Isoproturon
+PENTACLBZ;Classe d'état de la substance : Pentachlorobenzène
+SIMAZINE;Classe d'état de la substance : Simazine
+TRIFLURAL;Classe d'état de la substance : Trifluraline
+ANTHRACENE;Classe d'état de la substance : Anthracene
+BENZENE;Classe d'état de la substance : Benzene
+C1013CLALC;Classe d'état de la substance : C10-C13-CHLOROALCANES
+CHCL3;Classe d'état de la substance : Chloroforme
+DEHP;Classe d'état de la substance : DEHP
+1.2-2CLETH;Classe d'état de la substance : Dichloroéthane-1,2
+2CLMETHANE;Classe d'état de la substance : Dichlorométhane
+2PHBROME;Classe d'état de la substance : Diphényléthers bromés
+NAPHTALENE;Classe d'état de la substance : Naphtalene
+4-N-NONYLP;Classe d'état de la substance : Nonylphénol
+4-TER-OCPH;Classe d'état de la substance : Octylphénol
+TTCE;Classe d'état de la substance : Tétrachloroéthylène
+CCL4;Classe d'état de la substance : Tétrachlorure de carbone
+TCE;Classe d'état de la substance : Trichloroéthylène
+DDT 44;Classe d'état de la substance : DDT para para
+DDT;Classe d'état de la substance : DDT total
+FLUORANTH;Classe d'état de la substance : Fluoranthène
+BENZO(A)PY;Classe d'état de la substance : HAP Benzo(a)pyrène
+BE(B+K)FLU;Classe d'état de la substance : HAP Benzo(b,k)fluoranthène
+BE(GHI)INDENO;Classe d'état de la substance : HAP Benzo et Indéno
+BE(B)FLU;Classe d'état de la substance : Benzo(b)fluoranthène
+BE(K)FLU;Classe d'état de la substance : Benzo(k)fluoranthène
+BE(GHI)PERYL;Classe d'état de la substance : Benzo(g,h,i)perylène
+INDENOPYREN;Classe d'état de la substance : Indeno(1,2,3-cd)-pyrène
+HCB;Classe d'état de la substance : Hexachlorobenzène
+HCBU;Classe d'état de la substance : Hexachlorobutadiène
+PCP;Classe d'état de la substance : Pentachlorophénol
+PESTCYCLO;Classe d'état de la substance : Pesticides cyclodiènes
+TRIBUTYTIN;Classe d'état de la substance : Tributylétain
+SOMTRICLBZ;Classe d'état de la substance : Trichlorobenzènes
+DICOFOL;Classe d'état de la substance : Dicofol
+SUL PFOS;Classe d'état de la substance : Acide perfluo­ rooctane-sulfo­ nique et ses dérivés (per­ fluoro-octane­ sulfonate PFOS)
+QUINOXYFEN;Classe d'état de la substance : Quinoxyfène
+DIOXINES;Classe d'état de la substance : Dioxines et composés de type dioxine
+ACLONIFEN;Classe d'état de la substance : Aclonifène
+BIFENOX;Classe d'état de la substance : Bifénox
+CYBUTRYNE;Classe d'état de la substance : Cybutryne
+CYPERMETH;Classe d'état de la substance : Cyperméthrine
+DICHLORVOS;Classe d'état de la substance : Dichlorvos
+HBCDD;Classe d'état de la substance : Hexabromocyclododécane (HBCDD) 
+SOMHEPTACH;Classe d'état de la substance : Heptachlore et époxyde d’hep­tachlore
+TERBUTRYNE;Classe d'état de la substance : Terbutryne
+fCD;Fréquence de prélèvement de la substance : Cadmium
+fHG;Fréquence de prélèvement de la substance : Mercure
+fNI;Fréquence de prélèvement de la substance : Nickel
+fPB;Fréquence de prélèvement de la substance : Plomb
+fALACHLORE;Fréquence de prélèvement de la substance : Alachlore
+fATRAZINE;Fréquence de prélèvement de la substance : Atrazine
+fCHLORFENVI;Fréquence de prélèvement de la substance : Chlorfenvinphos
+fDIURON;Fréquence de prélèvement de la substance : Diuron
+fENDOSULFAN;Fréquence de prélèvement de la substance : Endosulfan
+fETCHLORPY;Fréquence de prélèvement de la substance : Ethylchlorpyriphos
+fHCH;Fréquence de prélèvement de la substance : Hexachlorocyclohexane
+fISOPROTURON;Fréquence de prélèvement de la substance : Isoproturon
+fPENTACLBZ;Fréquence de prélèvement de la substance : Pentachlorobenzène
+fSIMAZINE;Fréquence de prélèvement de la substance : Simazine
+fTRIFLURAL;Fréquence de prélèvement de la substance : Trifluraline
+fANTHRACENE;Fréquence de prélèvement de la substance : Anthracene
+fBENZENE;Fréquence de prélèvement de la substance : Benzene
+fC1013CLALC;Fréquence de prélèvement de la substance : C10-C13-CHLOROALCANES
+fCHCL3;Fréquence de prélèvement de la substance : Chloroforme
+fDEHP;Fréquence de prélèvement de la substance : DEHP
+f1.2-2CLETH;Fréquence de prélèvement de la substance : Dichloroéthane-1,2
+f2CLMETHANE;Fréquence de prélèvement de la substance : Dichlorométhane
+f2PHBROME;Fréquence de prélèvement de la substance : Diphényléthers bromés
+fNAPHTALENE;Fréquence de prélèvement de la substance : Naphtalene
+f4-N-NONYLP;Fréquence de prélèvement de la substance : Nonylphénol
+f4-TER-OCPH;Fréquence de prélèvement de la substance : Octylphénol
+fTTCE;Fréquence de prélèvement de la substance : Tétrachloroéthylène
+fCCL4;Fréquence de prélèvement de la substance : Tétrachlorure de carbone
+fTCE;Fréquence de prélèvement de la substance : Trichloroéthylène
+fDDT 44;Fréquence de prélèvement de la substance : DDT para para
+fDDT;Fréquence de prélèvement de la substance : DDT total
+fFLUORANTH;Fréquence de prélèvement de la substance : Fluoranthène
+fBENZO(A)PY;Fréquence de prélèvement de la substance : HAP Benzo(a)pyrène
+fBE(B+K)FLU;Fréquence de prélèvement de la substance : HAP Benzo(b,k)fluoranthène
+fBE(GHI)INDENO;Fréquence de prélèvement de la substance : HAP Benzo et Indéno
+fBE(B)FLU;Fréquence de prélèvementde la substance : Benzo(b)fluoranthène
+fBE(K)FLU;Fréquence de prélèvementde la substance : Benzo(k)fluoranthène
+fBE(GHI)PERYL;Fréquence de prélèvementde la substance : Benzo(g,h,i)perylène
+fINDENOPYREN;Fréquence de prélèvementde la substance : Indeno(1,2,3-cd)-py
+fHCB;Fréquence de prélèvement de la substance : Hexachlorobenzène
+fHCBU;Fréquence de prélèvement de la substance : Hexachlorobutadiène
+fPCP;Fréquence de prélèvement de la substance : Pentachlorophénol
+fPESTCYCLO;Fréquence de prélèvement de la substance : Pesticides cyclodiènes
+fTRIBUTYTIN;Fréquence de prélèvement de la substance : Tributylétain
+fSOMTRICLBZ;Fréquence de prélèvement de la substance : Trichlorobenzènes
+fDICOFOL;Fréquence de prélèvement de la substance : Dicofol
+fSUL PFOS;Fréquence de prélèvement de la substance : Acide perfluo­ rooctane-sulfo­ nique et ses dérivés (per­ fluoro-octane­ sulfonate PFOS)
+fQUINOXYFEN;Fréquence de prélèvement de la substance : Quinoxyfène
+fDIOXINES;Fréquence de prélèvement de la substance : Dioxines et composés de type dioxine
+fACLONIFEN;Fréquence de prélèvement de la substance : Aclonifène
+fBIFENOX;Fréquence de prélèvement de  la substance : Bifénox
+fCYBUTRYNE;Fréquence de prélèvement de la substance : Cybutryne
+fCYPERMETH;Fréquence de prélèvement de la substance : Cyperméthrine
+fDICHLORVOS;Fréquence de prélèvement de la substance : Dichlorvos
+fHBCDD;Fréquence de prélèvement de la substance : Hexabromocyclododécane (HBCDD) 
+fSOMHEPTACH;Fréquence de prélèvement de la substance : Heptachlore et époxyde d’hep­tachlore
+fTERBUTRYNE;Fréquence de prélèvement de la substance : Terbutryne
+aCD;Année retenue pour la moyenne de la substance : Cadmium
+aHG;Année retenue pour la moyenne de la substance : Mercure
+aNI;Année retenue pour la moyenne de la substance : Nickel
+aPB;Année retenue pour la moyenne de la substance : Plomb
+aALACHLORE;Année retenue pour la moyenne de la substance : Alachlore
+aATRAZINE;Année retenue pour la moyenne de la substance : Atrazine
+aCHLORFENVI;Année retenue pour la moyenne de la substance : Chlorfenvinphos
+aDIURON;Année retenue pour la moyenne de la substance : Diuron
+aENDOSULFAN;Année retenue pour la moyenne de la substance : Endosulfan
+aETCHLORPY;Année retenue pour la moyenne de la substance : Ethylchlorpyriphos
+aHCH;Année retenue pour la moyenne de la substance : Hexachlorocyclohexane
+aISOPROTURON;Année retenue pour la moyenne de la substance : Isoproturon
+aPENTACLBZ;Année retenue pour la moyenne de la substance : Pentachlorobenzène
+aSIMAZINE;Année retenue pour la moyenne de la substance : Simazine
+aTRIFLURAL;Année retenue pour la moyenne de la substance : Trifluraline
+aANTHRACENE;Année retenue pour la moyenne de la substance : Anthracene
+aBENZENE;Année retenue pour la moyenne de la substance : Benzene
+aC1013CLALC;Année retenue pour la moyenne de la substance : C10-C13-CHLOROALCANES
+aCHCL3;Année retenue pour la moyenne de la substance : Chloroforme
+aDEHP;Année retenue pour la moyenne de la substance : DEHP
+a1.2-2CLETH;Année retenue pour la moyenne de la substance : Dichloroéthane-1,2
+a2CLMETHANE;Année retenue pour la moyenne de la substance : Dichlorométhane
+a2PHBROME;Année retenue pour la moyenne de la substance : Diphényléthers bromés
+aNAPHTALENE;Année retenue pour la moyenne de la substance : Naphtalene
+a4-N-NONYLP;Année retenue pour la moyenne de la substance : Nonylphénol
+a4-TER-OCPH;Année retenue pour la moyenne de la substance : Octylphénol
+aTTCE;Année retenue pour la moyenne de la substance : Tétrachloroéthylène
+aCCL4;Année retenue pour la moyenne de la substance : Tétrachlorure de carbone
+aTCE;Année retenue pour la moyenne de la substance : Trichloroéthylène
+aDDT 44;Année retenue pour la moyenne de la substance : DDT para para
+aDDT;Année retenue pour la moyenne de la substance : DDT total
+aFLUORANTH;Année retenue pour la moyenne de la substance : Fluoranthène
+aBENZO(A)PY;Année retenue pour la moyenne de la substance : HAP Benzo(a)pyrène
+aBE(B+K)FLU;Année retenue pour la moyenne de la substance : HAP Benzo(b,k)fluoranthène
+aBE(GHI)INDENO;Année retenue pour la moyenne de la substance : HAP Benzo et Indéno
+aHCB;Année retenue pour la moyenne de la substance : Hexachlorobenzène
+aHCBU;Année retenue pour la moyenne de la substance : Hexachlorobutadiène
+aPCP;Année retenue pour la moyenne de la substance : Pentachlorophénol
+aPESTCYCLO;Année retenue pour la moyenne de la substance : Pesticides cyclodiènes
+aTRIBUTYTIN;Année retenue pour la moyenne de la substance : Tributylétain
+aSOMTRICLBZ;Année retenue pour la moyenne de la substance : Trichlorobenzènes
+aDICOFOL;Année retenue pour la moyenne de la substance : Dicofol
+aSUL PFOS;Année retenue pour la moyenne de la substance : Acide perfluo­ rooctane-sulfo­ nique et ses dérivés (per­ fluoro-octane­ sulfonate PFOS)
+aQUINOXYFEN;Année retenue pour la moyenne de la substance : Quinoxyfène
+aDIOXINES;Année retenue pour la moyenne de la substance : Dioxines et composés de type dioxine
+aACLONIFEN;Année retenue pour la moyenne de la substance : Aclonifène
+aBIFENOX;Année retenue pour la moyenne de la substance : Bifénox
+aCYBUTRYNE;Année retenue pour la moyenne de la substance : Cybutryne
+aCYPERMETH;Année retenue pour la moyenne de la substance : Cyperméthrine
+aDICHLORVOS;Année retenue pour la moyenne de la substance : Dichlorvos
+aHBCDD;Classe d'état de la substance : Hexabromocyclododécane (HBCDD) 
+aSOMHEPTACH;Année retenue pour la moyenne de la substance : Heptachlore et époxyde d’hep­tachlore
+aTERBUTRYNE;Année retenue pour la moyenne de la substance : Terbutryne
+aBE(B)FLU;Année retenue pour la substance : Benzo(b)fluoranthène
+aBE(K)FLU;Année retenue pour la substance : Benzo(k)fluoranthène
+aBE(GHI)PERYL;Année retenue pour la substance : Benzo(g,h,i)perylène
+aINDENOPYREN;Année retenue pour la la substance : Indeno(1,2,3-cd)-pyrène
+PARAGROUP;Code de la substance (NUMDCE) de l'arrêté
+PARAGROUPLIBCOURT;Nom court de la substance
+PARAGROUPLIB;Nom de la substance
+FAMILLE;Famille à laquelle appartient la substance
+GROUPE;Substance issue d'un groupe de paramètres
+QUANTIFEAN;"Résultat quantifié sur l'année (0= jamais quantifié ; 1=quantifié à minima 1 fois)"
+RESULTATMAX;Concentration maximale admise : valeur du résultat max (ou LQMAX pour les non quantifiés)
+NQECMA;Valeur de la NQECMA de l'arrêté (-99 = sans objet)
+CLASSECMA;Concentration maximale admise (CMA) : classe d'état
+MOY;Moyenne annuelle (MA) : valeur de la moyenne annuelle
+MOYMIN;Moyenne annuelle (MA) : valeur de la moyenne annuelle minimale
+MOYMAX;Moyenne annuelle (MA) : valeur de la moyenne annuelle maximale
+LQMAX;Valeur de la limite de quantification maximale du laboratoire
+NQEMA;Valeur de la NQEMA de l'arrêté
+CLASSEMA;Moyenne annuelle(MA) : classe d'état
+CLASSEMARQ;Moyenne annuelle(MA) : remarque sur la classe d'état
+CLASSEETAT;Classe d'état de la substance
+PARAMDECLASS;Liste des parametres declassants
+N_CHIMDECLASS;Nombre de parametres déclassants
+N_PARAM_IND;Nombre de paramètres indéterminés (0 ou Null)
+N_PARAM_BON;Nombre de paramètres qualifiés de Bon (=1)
+ECHELLESTA;Localisation de la station, échelle géographique, commision territoriale
+ECHELLEME;Localisation de la masse d'eau, échelle géographique, commision territoriale
+CLASSEETAT;(onglet RAPPORTAGE) Classe de qualité (0=Indéterminé, 1 = Bon, 2 = Mauvais, 9 = absence de données)
+METAUX ;(onglet RAPPORTAGE) % de substances de la famille  : METAUX
+PEST;(onglet RAPPORTAGE) % de substances de la famille  : PESTICIDES
+POLIND;(onglet RAPPORTAGE) % de substances de la famille  : POLLUANTS INDUSTRIELS
+AUTREPOL;(onglet RAPPORTAGE) % de substances de la famille  : AUTRES POLLUANTS
+GLOBAL;(onglet RAPPORTAGE) % de substances de la famille  : TOUTES FAMILLES CONFONDUES
+LEGENDE;(onglet RAPPORTAGE) Légende classe de qualité
+TABSTATION;(onglet StationStat) Eléments de qualité et Paramètres chimiques
+NONQUALIFIE;(onglet StationStat et MeStat) Effectifs non qualifiés (nombre de stations ou de masses d'eau)
+BON;(onglet StationStat et MeStat) Effectifs en bon état (nombre de stations ou de masses d'eau)
+MAUVAIS;(onglet StationStat et MeStat) Effectifs en mauvais état (nombre de stations ou de masses d'eau)
+NB_STAT_TRAITEES;(onglet StationStat et MeStat) Nombre de stations étudiées
+%NONQUALIFIE;(onglet StationStat et MeStat) Pourcentage non qualifiés (% de stations ou de masses d'eau)
+%BON;(onglet StationStat et MeStat) Pourcentage en Bon état (% de stations ou de masses d'eau)
+%MAUVAIS;(onglet StationStat et MeStat) Pourcentage en Mauvais état (% de stations ou de masses d'eau)
+MAX_RESULTAT;(onglet Variabilité) Maximum des concentrations annuelles (en comparaison avec NQECMA)
+MOY_RESULTAT;(onglet Variabilité) Moyenne des concentrations annuelles (en comparaison avec NQEMA)
+MIN;(onglet Variabilité) Minimum des concentrations annuelles 
+Q1;(onglet Variabilité) 1er Quartile des concentrations annuelles 
+Mediane;(onglet Variabilité) Médiane des concentrations annuelles 
+Q3;(onglet Variabilité) 3ième Quartile des concentrations annuelles 
+MAX;(onglet Variabilité) Maximum des concentrations annuelles 
+MOYENNE;(onglet Variabilité) Moyenne  des concentrations annuelles 
+FREQ;(onglet Variabilité) Fréquence de prélèvements

@@ -1,0 +1,25 @@
+LISTPARAM
+Version logiciel
+CALCUL
+LOGIN
+BASSIN
+FAIT LE
+Période Prélèvement : 
+Profondeur de l'échantillon (Plan d'eau) : 
+NOMBRE DE STATIONS :
+Calculer l'Etat Chimique :
+Fichier de données PCH :  
+Fichier de données Station :  
+Fichier de données Masse d'eau :  
+Calculer l'état chimique à la ME : 
+Respecter le code fraction CHIMIE (support eau) : 
+Respecter l'unité des paramètres CHIMIE : 
+Respecter le nombre minimal de prélèvements CHIMIE :
+Nombre minimal de prélèvements : 
+Méthode - Calcul de la moyene annuelle CHIMIE : 
+Retrait des prélevements si LQ > NQEMA (CHIMIE)
+Retrait des prélevements si LQ aberrantes (CHIMIE)
+Nombre de stations avec LQ manquant :
+Nombre de stations manquantes dans la table STATION :
+Nombre de doublons dans les données CHIMIE : 
+Commentaires : 

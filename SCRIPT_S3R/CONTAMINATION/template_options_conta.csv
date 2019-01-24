@@ -1,0 +1,27 @@
+LISTPARAM
+Version logiciel
+CALCUL
+LOGIN
+BASSIN
+FAIT LE
+Période Prélèvement : 
+NOMBRE DE STATIONS :
+Fichier de données brutes :  
+Fichier de données Station :  
+Fichier de données Masse d'eau :  
+Extrapolatyion des classes de qualité à la ME : 
+Respecter le code fraction  (support eau) : 
+Respecter l'unité des paramètres  : 
+Respecter le nombre minimal de prélèvements  :
+Nombre minimal de prélèvements : 
+Nombre de stations avec LQ manquant :
+Nombre de stations manquantes dans la table STATION :
+Nombre de doublons dans les données  : 
+Méthode de calcul :
+Type d'Agrégation des valeurs de résulats :
+Choix des seuils de limite de classe :
+Coef Seuil 1 : Bon/Moyen :
+Coef Seuil 2 : Moyen/Médiocre :
+Coef Seuil 3 : Médiocre/Mauvais :
+Nombre de classes de qualité :
+Commentaires : 

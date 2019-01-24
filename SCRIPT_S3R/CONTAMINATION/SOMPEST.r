@@ -1,0 +1,376 @@
+##############################################
+## SEEE - COURS D'EAU : Somme de Pesticides 
+
+##############################################
+
+
+##############################
+## Mise en forme des données
+##############################
+gc()
+
+
+# requete préparatoire pour savoir si quantifée
+CONTAM<-DATACONTA[DATACONTA$STATION %in% STATION$STATION,]
+
+CONTAM$ID<-paste(CONTAM$STATION, CONTAM$PARAMETRE, sep="_")
+gc()
+CONTAM<-merge(CONTAM,LISTECODERQE[,c("REMARQUE","QUANTIFIE")],by="REMARQUE")
+gc()
+
+
+# on récupère des infos dans GRILLE CONTAMINATION
+CONTAM<-merge(CONTAM,PARAMETRECONTA[, c("PARAMETRE","PARAMETRELIB","NOMCOURT", "FAMILLE","CAS", "PESTICIDE", "ETATPS", "ETATCHIM","USAGE_PRINC","COEFFTOX")] , 
+				by = "PARAMETRE",all.x = TRUE)
+nrow(CONTAM)
+gc()
+
+## On ne sélectionne que les pesticides
+CONTAM<-CONTAM[CONTAM$PESTICIDE == "oui",]
+nrow(CONTAM)
+gc()
+
+###Calcul de la frequence de prelevement sur la période
+CONTAMFREQ<-CONTAM
+CONTAMFREQ$FREQ<-1
+FREQPRELEV<-aggregate(FREQ ~ STATION +  PARAMETRE , data = CONTAMFREQ , sum)
+CONTAM<-merge(CONTAM, FREQPRELEV, by = c("STATION","PARAMETRE"), all.x=TRUE )
+
+
+###Calcul de la frequence de prelevement quantifié sur la période
+CONTAMFREQ<-CONTAM
+CONTAMFREQ$FREQQUANTI<-1
+if (nrow(CONTAMFREQ[CONTAMFREQ$QUANTIFIE == "1",]) > 0) {
+	FREQQUANTIPRELEV<-aggregate(FREQQUANTI ~ STATION +  PARAMETRE , data = CONTAMFREQ[CONTAMFREQ$QUANTIFIE == "1",] , sum)
+	CONTAM<-merge(CONTAM, FREQQUANTIPRELEV, by = c("STATION","PARAMETRE"), all.x=TRUE )
+	CONTAM$FREQQUANTI[is.na(CONTAM$FREQQUANTI)]<-0
+} else {
+	CONTAM$FREQQUANTI<-0
+}
+
+# 27/03/2018 :  traitement des LQ à zéro
+# cond 1 : Si LQ = 0 et CodeRemarque = (10,2ou7) et Résultat >= 0 alors LQ = Résultat puis Résultat = LQ/2.
+# Si LQ= 0 et CodeRemarque = 1 et Résultat > 0, alors ne rien changer
+# cond3 : Si LQ= 0 et CodeRemarque = 1 et Résultat = 0, alors retirer l'analyse avec un message d'alerte
+cond1<-CONTAM$LQ == 0 & CONTAM$RESULTAT >= 0 & CONTAM$REMARQUE %in% c(2,7,10)
+CONTAM$LQ[cond1]<-CONTAM$RESULTAT[cond1]
+
+cond3<-CONTAM$LQ == 0 & CONTAM$RESULTAT == 0 & CONTAM$REMARQUE == 1
+
+	if( nrow(CONTAM[cond3,])>0) {
+		CSV<-paste(CH_ERREUR,"CONTA_LQ_ZERO_QUANTIFIEE_",SEEE_DEBformat,"_gpe",g,".csv",sep="")
+		write.csv2(CONTAM[cond3,],CSV)
+		CONTAM<-CONTAM[!cond3,]
+		MSGBOX <- tkmessageBox(title = "Info", message = paste("Les", nrow(CONTAM[cond3,])  ," analyses avec 'LQ= 0 et CodeRemarque = 1 et Résultat = 0' \n ont été retirées  du calcul de l'état chimique et exportées dans \n",CSV,sep=""), icon = "info", type = "ok")
+	}
+
+	if (nrow(CONTAM) == 0) {
+			MSGBOX <- tkmessageBox(title = "Info", message = paste("Pas de données à traiter après le retrait des mesures avec LQ aberrantes \n",CSV,sep=""), icon = "info", type = "ok")
+			tcl("update")
+			source(paste(pathS,"msgerror.r",sep="") , echo = TRUE, print.eval = TRUE) #=quit
+	}
+gc()
+
+
+
+# RECALCUL de la valeur de Résultat en fonction de la LQ si pas quantifié
+# Si LQPROGRESSIVE = non alors on remplace le resultat par zéro
+# Sinon on utilise la métode des LQ progressive
+
+	# On commence par créer à dupliquer la colonne RESULTAT
+CONTAM$RESULTAT2<-CONTAM$RESULTAT
+
+if(LQPROGRESSIVE == "non") {
+		
+	#Si  on est pas quantifié 
+
+		if (LQ_NONDISPO =="oui") {
+			cond<- CONTAM$QUANTIFIE=="0" 
+			CONTAM$RESULTAT2[cond]<-0
+		} else {
+			cond<- CONTAM$QUANTIFIE=="0" | CONTAM$RESULTAT <= CONTAM$LQ
+			CONTAM$RESULTAT2[cond]<-0
+		}
+
+} else {
+
+	
+	CONTAM$COEFLQ<- (CONTAM$FREQ - (CONTAM$FREQ - CONTAM$FREQQUANTI)) / (  CONTAM$FREQ    - 1 )
+	CONTAM$COEFLQ[CONTAM$FREQ == 1] <-1
+
+	if (LQ_NONDISPO =="oui") {
+		cond<- CONTAM$QUANTIFIE=="0"
+		table(cond)		
+		CONTAM$RESULTAT2[cond]<-CONTAM$RESULTAT[cond] * CONTAM$COEFLQ[cond]
+	} else {
+		cond<- CONTAM$QUANTIFIE=="0" | CONTAM$RESULTAT <= CONTAM$LQ
+		CONTAM$RESULTAT2[cond]<-CONTAM$LQ[cond] * CONTAM$COEFLQ[cond]
+	}
+
+}
+gc()
+
+######## On supprime les prélevements dont la fréqence de preleveent n'est pas respectée
+
+if (FREQOKCONTA == "oui") {
+
+condfreq<-CONTAM$FREQ < NBANFREQ
+
+
+if( nrow(CONTAM[condfreq,])>0) {
+		CSV<-paste(CH_ERREUR,"CONTA_NONRESPECT_FREQPRELEV_",SEEE_DEBformat,"_gpe",g,".csv",sep="")
+		write.csv2(CONTAM[condfreq,],CSV)
+		CONTAM<-CONTAM[!condfreq,]
+		MSGBOX <- tkmessageBox(title = "Info", message = paste("Les ", nrow(CONTAM[condfreq,])  ," analyses ne respectant la frequence de prelevement \n( ",NBANFREQ," prelevements minimum) \n ont été retirées  du calcul de l'état chimique et exportées dans \n",CSV,sep=""), icon = "info", type = "ok")
+	}
+
+	if (nrow(CONTAM) == 0) {
+			MSGBOX <- tkmessageBox(title = "Info", message = paste("Pas de données à traiter après le respect de la frequence minimale de prelevement \n",CSV,sep=""), icon = "info", type = "ok")
+			tcl("update")
+			source(paste(pathS,"msgerror.r",sep="") , echo = TRUE, print.eval = TRUE) #=quit
+	}
+gc()
+
+
+}
+
+
+
+####################################################
+####################################################
+### SOMME DES PESTICIDES PAR DATES et SUBSTANCES ###
+####################################################
+####################################################
+
+
+
+
+## On multiplie le résultat par la pondération de toxicité
+CONTAM$RESULTAT2POND<-CONTAM$RESULTAT2 * CONTAM$COEFFTOX
+
+
+###Moyenne des concentrations par Station, parametre et date (en cas de doublons)
+CONTAM2<-aggregate(cbind(RESULTAT2,RESULTAT2POND,LQ) ~ STATION +  DATEPRELEV + PARAMETRE + PARAMETRELIB+ NOMCOURT  + FAMILLE + USAGE_PRINC + QUANTIFIE + FREQ + FREQQUANTI, data = CONTAM , mean)
+
+# Mois, Jour, année
+CONTAM2$JOUR<-substr(CONTAM2$DATEPRELEV,1,2)
+CONTAM2$MOIS<-substr(CONTAM2$DATEPRELEV,4,5)
+CONTAM2$ANNEE<-substr(CONTAM2$DATEPRELEV,7,10)
+
+
+
+###Somme des pesticides par station et par date
+SUMPEST_DATE<-aggregate(cbind(RESULTAT2,RESULTAT2POND) ~ STATION  + DATEPRELEV + JOUR + MOIS + ANNEE , data = CONTAM2 , sum)
+
+# Nombre de pesticides étudiés
+NBPEST_ETUDIES<-aggregate(RESULTAT2 ~ STATION  + DATEPRELEV , data = CONTAM2 , length)
+names(NBPEST_ETUDIES)[3]<-"NBPEST"
+
+# Nombre de pesticides quantifiés
+if( nrow(CONTAM2[CONTAM2$QUANTIFIE == "1",]) > 0) {
+	NBPEST_QUANTI<-aggregate(RESULTAT2 ~ STATION  + DATEPRELEV , data = CONTAM2[CONTAM2$QUANTIFIE == "1",] , length)
+	names(NBPEST_QUANTI)[3]<-"NBPESTQUANTI"
+	NBPEST<-merge(NBPEST_ETUDIES,NBPEST_QUANTI , by = c("STATION" ,"DATEPRELEV"), all = TRUE)
+	NBPEST$NBPESTQUANTI[is.na(	NBPEST$NBPESTQUANTI) ]<-0
+} else {
+
+	NBPEST<-NBPEST_ETUDIES
+	NBPEST$NBPESTQUANTI<-0
+}
+
+
+###Taux de QUantification
+NBPEST$TXPESTQUANTI<-  round(  NBPEST$NBPESTQUANTI  * 100 / NBPEST$NBPEST ,1)
+
+
+## PESTICIDE LE + CONTRIBUTEUR
+#CONTAM2[CONTAM2$STATION == "3001000" & CONTAM2$DATEPRELEV == "07/07/2014",]
+
+CONTAMMAX<-CONTAM2[order(CONTAM2$STATION,CONTAM2$DATEPRELEV , -CONTAM2$RESULTAT2),]
+
+CONTAMMAX<-CONTAMMAX[CONTAMMAX$RESULTAT2 > 0 ,]
+CONTAMMAX<-CONTAMMAX[!duplicated(CONTAMMAX[,c("STATION","DATEPRELEV")]),c("STATION","DATEPRELEV" ,"PARAMETRE", "PARAMETRELIB","NOMCOURT", "RESULTAT2" )]
+CONTAMMAX$SUBSTANCE_MAX<-paste0(CONTAMMAX$NOMCOURT, " (", CONTAMMAX$PARAMETRE, ")")
+names(CONTAMMAX)[6]<-"CMAX"
+CONTAMMAX<-CONTAMMAX[, c("STATION","DATEPRELEV","CMAX","SUBSTANCE_MAX")]
+
+
+## L'USAGE PRINC LE + CONTRIBUTEUR
+SUMUSAGE_DATE<-aggregate(cbind(RESULTAT2,RESULTAT2POND) ~ STATION  + DATEPRELEV + USAGE_PRINC , data = CONTAM2 , sum)
+
+SUMUSAGE_MAX<-SUMUSAGE_DATE[order(SUMUSAGE_DATE$STATION,SUMUSAGE_DATE$DATEPRELEV , -SUMUSAGE_DATE$RESULTAT2),]
+SUMUSAGE_MAX<-SUMUSAGE_MAX[SUMUSAGE_MAX$RESULTAT2 > 0 ,]
+SUMUSAGE_MAX<-SUMUSAGE_MAX[!duplicated(SUMUSAGE_MAX[,c("STATION","DATEPRELEV")]),c("STATION","DATEPRELEV" ,"USAGE_PRINC","RESULTAT2" )]
+names(SUMUSAGE_MAX)[4]<-"SUM_RESULT_USAGE"
+
+## LA FAMILLE LA PLUS CONTRIBUTIVE
+SUMFAMILLE_DATE<-aggregate(cbind(RESULTAT2,RESULTAT2POND) ~ STATION  + DATEPRELEV + FAMILLE , data = CONTAM2 , sum)
+
+SUMFAMILLE_MAX<-SUMFAMILLE_DATE[order(SUMFAMILLE_DATE$STATION,SUMFAMILLE_DATE$DATEPRELEV , -SUMFAMILLE_DATE$RESULTAT2),]
+SUMFAMILLE_MAX<-SUMFAMILLE_MAX[SUMFAMILLE_MAX$RESULTAT2 > 0 ,]
+SUMFAMILLE_MAX<-SUMFAMILLE_MAX[!duplicated(SUMFAMILLE_MAX[,c("STATION","DATEPRELEV")]),c("STATION","DATEPRELEV" ,"FAMILLE","RESULTAT2" )]
+names(SUMFAMILLE_MAX)[4]<-"SUM_RESULT_FAMILLE"
+
+
+
+## ON RASSEMBLE LES INFOS
+
+RESULTAT_SUMPEST<- merge(SUMPEST_DATE, NBPEST, by = c("STATION" ,"DATEPRELEV"), all.x = TRUE)
+RESULTAT_SUMPEST<- merge(RESULTAT_SUMPEST, CONTAMMAX, by = c("STATION" ,"DATEPRELEV"), all.x = TRUE)
+	#tx contrib substance max
+	RESULTAT_SUMPEST$TXCONTRIB_SUBSTMAX <- round(  RESULTAT_SUMPEST$CMAX  * 100 / RESULTAT_SUMPEST$RESULTAT2 ,1)
+
+RESULTAT_SUMPEST<- merge(RESULTAT_SUMPEST, SUMUSAGE_MAX, by = c("STATION" ,"DATEPRELEV"), all.x = TRUE)
+	#tx contrib substance max
+	RESULTAT_SUMPEST$TXCONTRIB_USAGE <- round(  RESULTAT_SUMPEST$SUM_RESULT_USAGE  * 100 / RESULTAT_SUMPEST$RESULTAT2 ,1)
+
+RESULTAT_SUMPEST<- merge(RESULTAT_SUMPEST, SUMFAMILLE_MAX, by = c("STATION" ,"DATEPRELEV"), all.x = TRUE)
+	#tx contrib substance max
+	RESULTAT_SUMPEST$TXCONTRIB_FAMILLE <- round(  RESULTAT_SUMPEST$SUM_RESULT_FAMILLE  * 100 / RESULTAT_SUMPEST$RESULTAT2 ,1)
+
+# On dit si c'est > 0.5 microgramme / LA
+RESULTAT_SUMPEST$SUP0.5MICROG.L<-"non"
+RESULTAT_SUMPEST$SUP0.5MICROG.L[RESULTAT_SUMPEST$RESULTAT2 > 0.5]<-"oui"
+
+
+RESULTAT_SUMPEST<-merge(RESULTAT_SUMPEST,STATION[, c("STATION","LIBELLE","EUCD","ECHELLESTA")] , 
+				by = "STATION",all.x = TRUE)
+				
+				
+RESULTAT_SUMPEST<-RESULTAT_SUMPEST[order(RESULTAT_SUMPEST$ANNEE,RESULTAT_SUMPEST$MOIS, RESULTAT_SUMPEST$JOUR),]				
+
+RESULTAT_SUMPEST<-RESULTAT_SUMPEST[,c(  "STATION" ,"ANNEE",  "MOIS", "DATEPRELEV" ,  "RESULTAT2" , "RESULTAT2POND", "NBPEST" , "NBPESTQUANTI" , "TXPESTQUANTI" , "CMAX"  , "SUBSTANCE_MAX",
+"TXCONTRIB_SUBSTMAX","USAGE_PRINC", "TXCONTRIB_USAGE","FAMILLE" ,"TXCONTRIB_FAMILLE" , "SUP0.5MICROG.L","LIBELLE"  , "EUCD"  , "ECHELLESTA")]
+
+#changement de nom de colonne
+names(RESULTAT_SUMPEST)[names(RESULTAT_SUMPEST) == "RESULTAT2"]<-"SommePest"
+names(RESULTAT_SUMPEST)[names(RESULTAT_SUMPEST) == "RESULTAT2POND"]<-"SommePestPond"
+
+
+####################################################
+####################################################
+### MOYENNE DES PESTICIDES PAR DATES et SUBSTANCES ###
+####################################################
+####################################################
+# NB de dates étudiées sur la période
+UNIKDATE_PERIODE<-CONTAM2[!duplicated(CONTAM2[,c("STATION","DATEPRELEV")]),c("STATION","DATEPRELEV")]
+UNIKDATE_PERIODE$NBDATES_PERIODE<-1
+NBDATE_ETUDIES_PERIODE<-aggregate(NBDATES_PERIODE ~ STATION   , data = UNIKDATE_PERIODE , sum)
+
+# MOYENNE des sommes des concentrations pesticides (à partir de SUMPEST_DATE)
+SUMPEST_MOYSTATPERIODE<-aggregate(cbind(RESULTAT2,RESULTAT2POND) ~ STATION   , data = SUMPEST_DATE , mean)
+	#on rassemble les infos
+	SUMPEST_PERIODE<-merge(NBDATE_ETUDIES_PERIODE, SUMPEST_MOYSTATPERIODE, by = "STATION", all = TRUE)
+
+# MAX des sommes des concentrations pesticides (à partir de SUMPEST_DATE)
+SUMPEST_MAXSTATPERIODE<-aggregate(cbind(RESULTAT2,RESULTAT2POND) ~ STATION   , data = SUMPEST_DATE , max)
+names(SUMPEST_MAXSTATPERIODE)[2:3]<-c("MaxPest_Periode","MaxPestPond_Periode")
+	#on rassemble les infos
+	SUMPEST_PERIODE<-merge(SUMPEST_PERIODE, SUMPEST_MAXSTATPERIODE, by = "STATION", all = TRUE)
+
+	
+#nbre de pesticides total sur la station (toutes dates prises en compte)
+UNIKPEST_PERIODE<-CONTAM2[!duplicated(CONTAM2[,c("STATION","PARAMETRE")]),c("STATION","PARAMETRE")]
+UNIKPEST_PERIODE$NBPEST<-1
+NBPEST_ETUDIES_PERIODE<-aggregate(NBPEST ~ STATION   , data = UNIKPEST_PERIODE , sum)
+names(NBPEST_ETUDIES_PERIODE)[2]<-"NBPEST_PERIODE"
+	#on rassemble les infos
+	SUMPEST_PERIODE<-merge(SUMPEST_PERIODE, NBPEST_ETUDIES_PERIODE, by = "STATION", all = TRUE)
+
+#nbre de pesticides quantifiés total sur la station  (toutes dates prises en compte)
+UNIKPESTQUANTI_PERIODE<-CONTAM2[!duplicated(CONTAM2[,c("STATION","PARAMETRE","QUANTIFIE")]),c("STATION","PARAMETRE","QUANTIFIE")]
+UNIKPESTQUANTI_PERIODE$NBPEST<-1
+NBPESTQUANTI_ETUDIES_PERIODE<-aggregate(NBPEST ~ STATION + QUANTIFIE  , data = UNIKPESTQUANTI_PERIODE , sum)
+names(NBPESTQUANTI_ETUDIES_PERIODE)[3]<-"NBPESTQUANTI_PERIODE"
+NBPESTQUANTI_ETUDIES_PERIODE<-NBPESTQUANTI_ETUDIES_PERIODE[NBPESTQUANTI_ETUDIES_PERIODE$QUANTIFIE == "1", c("STATION","NBPESTQUANTI_PERIODE")]
+	#on rassemble les infos
+	SUMPEST_PERIODE<-merge(SUMPEST_PERIODE, NBPESTQUANTI_ETUDIES_PERIODE, by = "STATION", all = TRUE)
+
+
+###Taux de QUantification
+SUMPEST_PERIODE$TXPESTQUANTI_PERIODE<-  round(  SUMPEST_PERIODE$NBPESTQUANTI_PERIODE  * 100 / SUMPEST_PERIODE$NBPEST_PERIODE ,1)
+	
+
+## PESTICIDE LE + CONTRIBUTEUR
+#CONTAM2[CONTAM2$STATION == "3001000" & CONTAM2$DATEPRELEV == "07/07/2014",]
+
+CONTAMMAX_PERIODE<-CONTAM2[order(CONTAM2$STATION , -CONTAM2$RESULTAT2),]
+
+CONTAMMAX_PERIODE<-CONTAMMAX_PERIODE[CONTAMMAX_PERIODE$RESULTAT2 > 0 ,]
+CONTAMMAX_PERIODE<-CONTAMMAX_PERIODE[!duplicated(CONTAMMAX_PERIODE[,c("STATION")]),c("STATION" ,"PARAMETRE", "PARAMETRELIB","NOMCOURT", "RESULTAT2" )]
+CONTAMMAX_PERIODE$SUBSTANCE_MAX_PERIODE<-paste0(CONTAMMAX_PERIODE$NOMCOURT, " (", CONTAMMAX_PERIODE$PARAMETRE, ")")
+names(CONTAMMAX_PERIODE)[5]<-"CMAX_PERIODE"
+CONTAMMAX_PERIODE<-CONTAMMAX_PERIODE[, c("STATION","CMAX_PERIODE","SUBSTANCE_MAX_PERIODE")]
+
+
+## L'USAGE PRINC LE + CONTRIBUTEUR SUR LA PERIODE
+SUMUSAGE_PERIODE<-aggregate(cbind(RESULTAT2,RESULTAT2POND) ~ STATION  + USAGE_PRINC , data = CONTAM2 , sum)
+SUMUSAGE_MAX_PERIODE<-SUMUSAGE_PERIODE[order(SUMUSAGE_PERIODE$STATION , -SUMUSAGE_PERIODE$RESULTAT2),]
+SUMUSAGE_MAX_PERIODE<-SUMUSAGE_MAX_PERIODE[SUMUSAGE_MAX_PERIODE$RESULTAT2 > 0 ,]
+SUMUSAGE_MAX_PERIODE<-SUMUSAGE_MAX_PERIODE[!duplicated(SUMUSAGE_MAX_PERIODE[,c("STATION")]),c("STATION","USAGE_PRINC","RESULTAT2" )]
+names(SUMUSAGE_MAX_PERIODE)[2]<-"USAGE_PRINC_PERIODE"
+names(SUMUSAGE_MAX_PERIODE)[3]<-"SUM_USAGE_PRINC_PERIODE"
+
+## LA FAMILLE LA + CONTRIBUTIVE SUR LA PERIODE
+SUMFAMILLE_PERIODE<-aggregate(cbind(RESULTAT2,RESULTAT2POND) ~ STATION  + FAMILLE , data = CONTAM2 , sum)
+SUMFAMILLE_MAX_PERIODE<-SUMFAMILLE_PERIODE[order(SUMFAMILLE_PERIODE$STATION , -SUMFAMILLE_PERIODE$RESULTAT2),]
+SUMFAMILLE_MAX_PERIODE<-SUMFAMILLE_MAX_PERIODE[SUMFAMILLE_MAX_PERIODE$RESULTAT2 > 0 ,]
+SUMFAMILLE_MAX_PERIODE<-SUMFAMILLE_MAX_PERIODE[!duplicated(SUMFAMILLE_MAX_PERIODE[,c("STATION")]),c("STATION","FAMILLE","RESULTAT2"  )]
+names(SUMFAMILLE_MAX_PERIODE)[2]<-"FAMILLE_PERIODE"
+names(SUMFAMILLE_MAX_PERIODE)[3]<-"SUM_FAMILLE_PERIODE"
+
+
+
+
+## ON RASSEMBLE LES INFOS
+
+RESULTAT_SUMPEST_PERIODE<- merge(SUMPEST_PERIODE, CONTAMMAX_PERIODE, by = "STATION", all.x = TRUE)
+RESULTAT_SUMPEST_PERIODE<- merge(RESULTAT_SUMPEST_PERIODE, SUMUSAGE_MAX_PERIODE, by = "STATION", all.x = TRUE)
+	RESULTAT_SUMPEST_PERIODE$TXCONTRIB_USAGE <- round(RESULTAT_SUMPEST_PERIODE$SUM_USAGE_PRINC_PERIODE * 100 / ( RESULTAT_SUMPEST_PERIODE$RESULTAT2 * RESULTAT_SUMPEST_PERIODE$NBDATES_PERIODE),1 ) 
+RESULTAT_SUMPEST_PERIODE<- merge(RESULTAT_SUMPEST_PERIODE, SUMFAMILLE_MAX_PERIODE, by = "STATION", all.x = TRUE)
+	RESULTAT_SUMPEST_PERIODE$TXCONTRIB_FAMILLE <- round(RESULTAT_SUMPEST_PERIODE$SUM_FAMILLE_PERIODE * 100 / ( RESULTAT_SUMPEST_PERIODE$RESULTAT2 * RESULTAT_SUMPEST_PERIODE$NBDATES_PERIODE),1 ) 
+
+# On dit si c'est > 0.5 microgramme / L
+RESULTAT_SUMPEST_PERIODE$SUP0.5MICROG.L<-"non"
+RESULTAT_SUMPEST_PERIODE$SUP0.5MICROG.L[RESULTAT_SUMPEST_PERIODE$RESULTAT2 > 0.5]<-"oui"
+
+# Nombre de date où on dépasse le seuil de  > 0.5 microgramme / L
+RESULTAT_SUMPESTtemp<-RESULTAT_SUMPEST
+RESULTAT_SUMPESTtemp$NBDATESUPSEUIL<-1
+RESULTAT_NBDATESUPSEUIL<-aggregate(NBDATESUPSEUIL ~ STATION + SUP0.5MICROG.L   , data = RESULTAT_SUMPESTtemp , sum)
+RESULTAT_NBDATESUPSEUIL<-RESULTAT_NBDATESUPSEUIL[RESULTAT_NBDATESUPSEUIL$SUP0.5MICROG.L == "oui",c("STATION","NBDATESUPSEUIL")] 
+
+RESULTAT_SUMPEST_PERIODE<-merge(RESULTAT_SUMPEST_PERIODE,RESULTAT_NBDATESUPSEUIL, by = "STATION", all.x=TRUE)
+RESULTAT_SUMPEST_PERIODE$NBDATESUPSEUIL[is.na(RESULTAT_SUMPEST_PERIODE$NBDATESUPSEUIL)]<-0
+
+# TX du Nombre de date où on dépasse le seuil de  > 0.5 microgramme / L
+RESULTAT_SUMPEST_PERIODE$TXDATESUPSEUIL<-round(  RESULTAT_SUMPEST_PERIODE$NBDATESUPSEUIL  * 100 / RESULTAT_SUMPEST_PERIODE$NBDATES_PERIODE ,1)
+
+
+
+##On rajoute les infos sur la stations
+RESULTAT_SUMPEST_PERIODE<-merge(RESULTAT_SUMPEST_PERIODE,STATION[, c("STATION","LIBELLE","EUCD","ECHELLESTA")] , 
+				by = "STATION",all.x = TRUE)
+
+				
+
+#changement de nom de colonne
+names(RESULTAT_SUMPEST_PERIODE)[names(RESULTAT_SUMPEST_PERIODE) == "RESULTAT2"]<-"MoyPest_Periode"
+names(RESULTAT_SUMPEST_PERIODE)[names(RESULTAT_SUMPEST_PERIODE) == "RESULTAT2POND"]<-"MoyPestPond_Periode"
+RESULTAT_SUMPEST_PERIODE<-RESULTAT_SUMPEST_PERIODE[, -which(names(RESULTAT_SUMPEST_PERIODE) == "SUM_USAGE_PRINC_PERIODE")]
+RESULTAT_SUMPEST_PERIODE<-RESULTAT_SUMPEST_PERIODE[, -which(names(RESULTAT_SUMPEST_PERIODE) == "SUM_FAMILLE_PERIODE")]
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

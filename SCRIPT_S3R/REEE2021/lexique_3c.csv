@@ -1,0 +1,328 @@
+NOM_COURT;NOM_LONG
+NAME;Nom de la masse d'eau
+EUCD;Numéro de la masse d'eau
+ETATECOLOME;Etat Ecologique de la masse d'eau
+NIVEAU;Niveau de confiance de l'état écologique de la masse d'eau
+CAS;Cas de figure expliquant le niveau de confiance
+ETATECOLOHPSME;Etat Ecologique (hors polluants spécifiques) de la masse d'eau
+ETATBIOME;Etat Biologique de la masse d'eau
+ETATPCHME;Etat Physico-chimique de la masse d'eau (identique à l'état PCH de la station)
+ETATPSME;Etat des Polluants spécifiques de la masse d'eau (identique à l'état PS de la station)
+STATION;Identifiant de la station
+STATIONTXT;"Identifiant de la Station au format SANDRE (""0"" + 7caractères)"
+ETATECOLO;Etat Ecologique de la station
+ETATECOLOHPS;Etat Ecologique (hors polluants spécifiques) de la station
+ETATBIO;Etat Biologique de la station
+ETATPCH;Etat Physico-chimique de la station
+ETATPS;Etat des Polluants spécifiques de la station
+IBD;Classe d'état de l'IBD de la station
+I2M2;Classe d'état de l'I2M2 de la station
+IBGA;Classe d'état de l'IBGA de la station
+IPRP;Classe d'état de l'IPR+ de la station
+IBMR;Classe d'état de l'IBMR de la station
+BILANO2;Classe d'état de l'élément de qualité : BILAN O2 de la station
+NUT;Classe d'état de l'élément de qualité : NUTRIMENTS de la station
+TEMP;Classe d'état de l'élément de qualité : TEMPERATURE de la station
+ACID;Classe d'état de l'élément de qualité : ACIDIFICATION de la station
+NONSYNTH;Classe d'état des polluants NON SYNTHETIQUES de la station
+SYNTH;Classe d'état des polluants SYNTHETIQUES de la station
+O2;Classe d'état du paramètre : O2 de la station
+SATO2;Classe d'état du paramètre : Taux de saturation en O2 dissous de la station
+DBO5;Classe d'état du paramètre : DBO5 de la station
+COD;Classe d'état du paramètre : COD de la station
+PO43;Classe d'état du paramètre : PO43- de la station
+PHOS;Classe d'état du paramètre : Phosphore total de la station
+NH4;Classe d'état du paramètre : NH4+ de la station
+NO2;Classe d'état du paramètre : NO2- de la station
+NO3;Classe d'état du paramètre : NO3- de la station
+TEMPE;Classe d'état du paramètre : Température de la station
+PHMIN;Classe d'état du paramètre : pH min de la station
+PHMAX;Classe d'état du paramètre : pH max de la station
+NO3V2;Classe d'état du paramètre : NO3- de la station selon la grille AESN
+ARSENIC;Classe d'état du paramètre : Arsenic dissous de la station
+CHROME;Classe d'état du paramètre : Chrome dissous de la station
+CUIVRE;Classe d'état du paramètre : Cuivre dissous de la station
+ZINC;Classe d'état du paramètre : Zinc dissous de la station
+CHLORTOLURON;Classe d'état du paramètre : Chlortoluron de la station
+OXADIAZON;Classe d'état du paramètre : Oxadiazon de la station
+24D;Classe d'état du paramètre : 2,4 D de la station
+24MCPA;Classe d'état du paramètre : 2,4 MCPA de la station
+METAZACHLORE;Classe d'état du paramètre : Metazachlore de la station
+AMINOTRIAZOLE;Classe d'état du paramètre : Aminotriazole de la station
+NICOSULFURON;Classe d'état du paramètre : Nicosulfuron de la station
+AMPA;Classe d'état du paramètre : AMPA de la station
+GLYPHOSATE;Classe d'état du paramètre : Glyphosate de la station
+BENTAZONE;Classe d'état du paramètre : Bentazone de la station
+DIFLUFENICANIL;Classe d'état du paramètre : Diflufenicanil de la station
+CYPRODINIL;Classe d'état du paramètre : Cyprodinil de la station
+IMIDACLOPRIDE;Classe d'état du paramètre : Imidaclopride de la station
+IPRODIONE;Classe d'état du paramètre : Iprodione de la station
+AZOXYSTROBINE;Classe d'état du paramètre : Azoxystrobine de la station
+TOLUENE;Classe d'état du paramètre : Toluène de la station
+PHOSPHATETRIB;Classe d'état du paramètre : Phosphate de tributyle de la station
+BIPHENILE;Classe d'état du paramètre : Biphényle de la station
+BOSCALID;Classe d'état du paramètre : Boscalid de la station
+METALDEHYDE;Classe d'état du paramètre : Métaldéhyde de la station
+TEBUCONAZOLE;Classe d'état du paramètre :Tebuconazole de la station
+CHLORPROPHAME;Classe d'état du paramètre : Chlorprophame de la station
+XYLENE;Classe d'état du paramètre : Xylène de la station
+PENDIMETHALINE;Classe d'état du paramètre : Pendiméthaline de la station
+CHLORDECONE;Classe d'état du paramètre : Chlordécone de la station (uniquement en DOM)
+ASSOUPLI;Physico-chimie de la station assouplie
+MODELISE;Physico-chimie de la station modélisée
+NBINDICBIO;Niombre d'indicateurs biologiques présents
+LISTINDICBIO;Liste des indicateurs biologiques présents
+BIODECLASS;Liste des paramètres Biologiques déclassants
+N_BIODECLASS;Nombre de paramètres bio déclassants
+PCHDECLASS;Liste des paramètres physicochimiques déclassants (= moins que bon)
+N_PCHDECLASS;Nombre de paramètres physicochimiques déclassants  (= moins que bon)
+PCHASSOUP;Liste des paramètres physicochimiques déclassants assouplis  (= moins que bon)
+N_PCHASSOUP;Nombre de paramètres physicochimiques déclassants  assouplis  (= moins que bon)
+PSDECLASS;Liste des paramètres des polluants spécifiques déclassants  (= moins que bon)
+N_PSDECLASS;Nombre de paramètres des polluants spécifiques déclassants  (= moins que bon)
+ECODECLASS;Liste des paramètres Bio, PCH et PS déclassants  (= moins que bon)
+N_ECODECLASS;Nombre de paramètres Bio, PCH et PS déclassants  (= moins que bon)
+ECO_ORIGINDECLASS;Liste des paramètres Bio, PCH et PS déclassants  (= moins que bon et qui explique l'état)
+N_ECO_ORIGINDECLASS;Nombre de paramètres Bio, PCH et PS déclassants  (= moins que bon  et qui explique l'état)
+DOMAINE;Domaine piscicole de la station
+TYPEFR;TYPE FR de la station
+TYPESTAT;Type de station (MEFM, MEA, MEN) selon sa masse d'eau de rattachement
+ALTITUDE;Altitude de la station en mètre
+REPRESENTATIVE;Station représentative de la masse d'eau
+EXCEPT_FROID;Exception typologique : station naturellement froide et peu alcaline
+EXCEPT_CHAUD;Exception typologique : station naturellement chaude (HER6 et DOM)
+EXCEPT_ACID;Exception typologique : station naturellement acide
+EXCEPT_MO;Exception typologique : station naturellement riche en matière organique
+EXCEPT_TOURB;Exception typologique : station en zone de tourbière
+EXCEPT_O2;Exception typologique : station naturellement pauvre en O2
+ECHELLESTA;Echelle géographique d'appartenance de la station
+FONDGEO_ARSENIC;Valeur du fond géochimique : Arsenic
+FONDGEO_CHROME;Valeur du fond géochimique : Chrome
+FONDGEO_CUIVRE;Valeur du fond géochimique : Cuivre
+FONDGEO_ZINC;Valeur du fond géochimique : Zinc
+DURETE;Valeur de dureté
+MODIFIED;Masse d'eau fortement modifiée (MEFM)
+ARTIFICIAL;Masse d'eau artificielle (MEA)
+ECHELLEME;Echelle géographique d'appartenance de la masse d'eau
+RGLOBAL;Risque global de la masse d'eau
+RMACRO;Risque macropolluants de la masse d'eau
+RNIT;Risque nitrates de la masse d'eau
+RPEST;Risque pesticides de la masse d'eau
+RMICRO;Risque micropolluants de la masse d'eau
+RMORPHO;Risque morphologique de la masse d'eau
+RHYDRO;Risque hydrologique de la masse d'eau
+RPHOS;Risque phosphore total de la masse d'eau
+TYPEME;Type de masse d'eau (MEFM, MEA, MEN) déduit de MODIFIED et ARTIFICIAL
+vIBD;Valeur moyenne de l'IBD de la station
+vI2M2;Valeur moyenne de l'I2M2 de la station (correspond à l'EQR)
+vIBGA;Valeur moyenne de l'IBGA de la station
+vIPRP;Valeur moyenne de l'IPR+ de la station (correspond à l'EQR)
+vIBMR;Valeur moyenne de l'IBMR de la station
+vO2;Valeur au rang 90 du paramètre : O2 de la station
+vSATO2;Valeur au rang 90 du paramètre : Taux de saturation en O2 dissous de la station
+vDBO5;Valeur au rang 90 du paramètre : DBO5 de la station
+vCOD;Valeur au rang 90 du paramètre : COD de la station
+vPO43;Valeur au rang 90 du paramètre : PO43- de la station
+vPHOS;Valeur au rang 90 du paramètre : Phosphore total de la station
+vNH4;Valeur au rang 90 du paramètre : NH4+ de la station
+vNO2;Valeur au rang 90 du paramètre : NO2- de la station
+vNO3;Valeur au rang 90 du paramètre : NO3- de la station
+vTEMPE;Valeur au rang 90 du paramètre : Température de la station
+vPHMIN;Valeur au rang 90 du paramètre : pH min de la station
+vPHMAX;Valeur au rang 90 du paramètre : pH max de la station
+vARSENIC;Valeur moyenne du paramètre : Arsenic dissous de la station
+vCHROME;Valeur moyenne du paramètre : Chrome dissous de la station
+vCUIVRE;Valeur moyenne du paramètre : Cuivre dissous de la station
+vZINC;Valeur moyenne du paramètre : Zinc dissous de la station
+vCHLORTOLURON;Valeur moyenne du paramètre : Chlortoluron de la station
+vOXADIAZON;Valeur moyenne du paramètre : Oxadiazon de la station
+v24D;Valeur moyenne du paramètre : 2,4 D de la station
+v24MCPA;Valeur moyenne du paramètre : 2,4 MCPA de la station
+vMETAZACHLORE;Valeur moyenne du paramètre : Metazachlore de la station
+vAMINOTRIAZOLE;Valeur moyenne du paramètre : Aminotriazole de la station
+vNICOSULFURON;Valeur moyenne du paramètre : Nicosulfuron de la station
+vAMPA;Valeur moyenne du paramètre : AMPA de la station
+vGLYPHOSATE;Valeur moyenne du paramètre : Glyphosate de la station
+vBENTAZONE;Valeur moyenne du paramètre : Bentazone de la station
+vDIFLUFENICANIL;Valeur moyenne du paramètre : Diflufenicanil de la station
+vCYPRODINIL;Valeur moyenne du paramètre : Cyprodinil de la station
+vIMIDACLOPRIDE;Valeur moyenne du paramètre : Imidaclopride de la station
+vIPRODIONE;Valeur moyenne du paramètre : Iprodione de la station
+vAZOXYSTROBINE;Valeur moyenne du paramètre : Azoxystrobine de la station
+vTOLUENE;Valeur moyenne du paramètre : Toluène de la station
+vPHOSPHATETRIB;Valeur moyenne du paramètre : Phosphate de tributyle de la station
+vBIPHENILE;Valeur moyenne du paramètre : Biphényle de la station
+vBOSCALID;Valeur moyenne du paramètre : Boscalid de la station
+vMETALDEHYDE;Valeur moyenne du paramètre : Métaldéhyde de la station
+vTEBUCONAZOLE;Valeur moyenne du paramètre :Tebuconazole de la station
+vCHLORPROPHAME;Valeur moyenne du paramètre : Chlorprophame de la station
+vXYLENE;Valeur moyenne du paramètre : Xylène de la station
+vPENDIMETHALINE;Valeur moyenne du paramètre : Pendiméthaline de la station
+vCHLORDECONE;Valeur moyenne du paramètre : Chlordécone de la station (uniquement aux Caraïbes)
+eqrIBD;Valeur en EQR de l'IBD de la station
+eqrI2M2;Valeur en EQR de l'I2M2 de la station
+eqrIBGA;Valeur en EQR de l'IBGA de la station
+eqrIPRP;Valeur en EQR de l'IPR+ de la station
+eqrIBMR;Valeur en EQR de l'IBMR de la station
+iETATECOLOHPS;Indice (0-100) de l'état écologique hors polluant spécifique (Indice le plus déclassant des états)
+iETATBIO;Indice (0-100) de l'état biologique (Indice le plus déclassant des indicateurs)
+iIBD;Indice (0-100) de l'IBD de la station
+iI2M2;Indice (0-100) de l'I2M2 de la station
+iIBGA;Indice (0-100) de l'IBGA de la station
+iIPRP;Indice (0-100) de l'IPR+ de la station
+iIBMR;Indice (0-100) de l'IBMR de la station
+QUARTCLASSE;L'état biologique peut-il bénéficier de la règle du 1/4 de classe ?
+iETATPCH;Indice (0-100) de l'état physico-chimique (Indice le plus déclassant des paramètres)
+iBILANO2;Indice (0-100) le plus déclassant de l'élément de qualité : Bilan de l'oxygène
+iNUT;Indice (0-100) le plus déclassant de l'élément de qualité : Nutriments
+iTEMP;Indice (0-100) le plus déclassant de l'élément de qualité :Température
+iACID;Indice (0-100) le plus déclassant de l'élément de qualité : Acidification
+iO2;Indice (0-100) du paramètre : O2 de la station
+iSATO2;Indice (0-100) du paramètre : Taux de saturation en O2 dissous de la station
+iDBO5;Indice (0-100) du paramètre : DBO5 de la station
+iCOD;Indice (0-100) du paramètre : COD de la station
+iPO43;Indice (0-100) du paramètre : PO43- de la station
+iPHOS;Indice (0-100) du paramètre : Phosphore total de la station
+iNH4;Indice (0-100) du paramètre : NH4+ de la station
+iNO2;Indice (0-100) du paramètre : NO2- de la station
+iNO3;Indice (0-100) du paramètre : NO3- de la station
+iTEMPE;Indice (0-100) du paramètre : Température de la station
+iPHMIN;Indice (0-100) du paramètre : pH min de la station
+iPHMAX;Indice (0-100) du paramètre : pH max de la station
+fIBD;Fréquence de prélèvement de l'IBD de la station
+fI2M2;Fréquence de prélèvement de l'I2M2 de la station
+fIBGA;Fréquence de prélèvement de l'IBGA de la station
+fIPRP;Fréquence de prélèvement de l'IPR+ de la station
+fIBMR;Fréquence de prélèvement de l'IBMR de la station
+fO2;Fréquence de prélèvement du paramètre : O2 de la station
+fSATO2;Fréquence de prélèvement du paramètre : Taux de saturation en O2 dissous de la station
+fDBO5;Fréquence de prélèvement du paramètre : DBO5 de la station
+fCOD;Fréquence de prélèvement du paramètre : COD de la station
+fPO43;Fréquence de prélèvement du paramètre : PO43- de la station
+fPHOS;Fréquence de prélèvement du paramètre : Phosphore total de la station
+fNH4;Fréquence de prélèvement du paramètre : NH4+ de la station
+fNO2;Fréquence de prélèvement du paramètre : NO2- de la station
+fNO3;Fréquence de prélèvement du paramètre : NO3- de la station
+fTEMPE;Fréquence de prélèvement du paramètre : Température de la station
+fPHMIN;Fréquence de prélèvement du paramètre : pH min de la station
+fPHMAX;Fréquence de prélèvement du paramètre : pH max de la station
+fARSENIC;Fréquence de prélèvement du paramètre : Arsenic dissous de la station
+fCHROME;Fréquence de prélèvement du paramètre : Chrome dissous de la station
+fCUIVRE;Fréquence de prélèvement du paramètre : Cuivre dissous de la station
+fZINC;Fréquence de prélèvement du paramètre : Zinc dissous de la station
+fCHLORTOLURON;Fréquence de prélèvement du paramètre : Chlortoluron de la station
+fOXADIAZON;Fréquence de prélèvement du paramètre : Oxadiazon de la station
+f24D;Fréquence de prélèvement du paramètre : 2,4 D de la station
+f24MCPA;Fréquence de prélèvement du paramètre : 2,4 MCPA de la station
+fMETAZACHLORE;Fréquence de prélèvement du paramètre : Metazachlore de la station
+fAMINOTRIAZOLE;Fréquence de prélèvement du paramètre : Aminotriazole de la station
+fNICOSULFURON;Fréquence de prélèvement du paramètre : Nicosulfuron de la station
+fAMPA;Fréquence de prélèvement du paramètre : AMPA de la station
+fGLYPHOSATE;Fréquence de prélèvement du paramètre : Glyphosate de la station
+fBENTAZONE;Fréquence de prélèvement du paramètre : Bentazone de la station
+fDIFLUFENICANIL;Fréquence de prélèvement du paramètre : Diflufenicanil de la station
+fCYPRODINIL;Fréquence de prélèvement du paramètre : Cyprodinil de la station
+fIMIDACLOPRIDE;Fréquence de prélèvement du paramètre : Imidaclopride de la station
+fIPRODIONE;Fréquence de prélèvement du paramètre : Iprodione de la station
+fAZOXYSTROBINE;Fréquence de prélèvement du paramètre : Azoxystrobine de la station
+fTOLUENE;Fréquence de prélèvement du paramètre : Toluène de la station
+fPHOSPHATETRIB;Fréquence de prélèvement du paramètre : Phosphate de tributyle de la station
+fBIPHENILE;Fréquence de prélèvement du paramètre : Biphényle de la station
+fBOSCALID;Fréquence de prélèvement du paramètre : Boscalid de la station
+fMETALDEHYDE;Fréquence de prélèvement du paramètre : Métaldéhyde de la station
+fTEBUCONAZOLE;Fréquence de prélèvement du paramètre :Tebuconazole de la station
+fCHLORPROPHAME;Fréquence de prélèvement du paramètre : Chlorprophame de la station
+fXYLENE;Fréquence de prélèvement du paramètre : Xylène de la station
+fPENDIMETHALINE;Fréquence de prélèvement du paramètre : Pendiméthaline de la station
+fCHLORDECONE;Fréquence de prélèvement du paramètre : Chlordécone de la station (uniquement aux Caraïbes)
+fdO2;Fréquence de déclassement du paramètre : O2 de la station
+fdSATO2;Fréquence de déclassement du paramètre : Taux de saturation en O2 dissous de la station
+fdDBO5;Fréquence de déclassement du paramètre : DBO5 de la station
+fdCOD;Fréquence de déclassement du paramètre : COD de la station
+fdPO43;Fréquence de déclassement du paramètre : PO43- de la station
+fdPHOS;Fréquence de déclassement du paramètre : Phosphore total de la station
+fdNH4;Fréquence de déclassement du paramètre : NH4+ de la station
+fdNO2;Fréquence de déclassement du paramètre : NO2- de la station
+fdNO3;Fréquence de déclassement du paramètre : NO3- de la station
+fdTEMPE;Fréquence de déclassement du paramètre : Température de la station
+fdPHMIN;Fréquence de déclassement du paramètre : pH min de la station
+fdPHMAX;Fréquence de déclassement du paramètre : pH max de la station
+aARSENIC;Année retenue pour la moyenne du paramètre : Arsenic dissous de la station
+aCHROME;Année retenue pour la moyenne du paramètre : Chrome dissous de la station
+aCUIVRE;Année retenue pour la moyenne du paramètre : Cuivre dissous de la station
+aZINC;Année retenue pour la moyenne du paramètre : Zinc dissous de la station
+aCHLORTOLURON;Année retenue pour la moyenne du paramètre : Chlortoluron de la station
+aOXADIAZON;Année retenue pour la moyenne du paramètre : Oxadiazon de la station
+aLINURON;Année retenue pour la moyenne du paramètre : Linuron de la station
+a24D;Année retenue pour la moyenne du paramètre : 2,4 D de la station
+a24MCPA;Année retenue pour la moyenne du paramètre : 2,4 MCPA de la station
+aMETAZACHLORE;Année retenue pour la moyenne du paramètre : Metazachlore de la station
+aAMINOTRIAZOLE;Année retenue pour la moyenne du paramètre : Aminotriazole de la station
+aNICOSULFURON;Année retenue pour la moyenne du paramètre : Nicosulfuron de la station
+aAMPA;Année retenue pour la moyenne du paramètre : AMPA de la station
+aGLYPHOSATE;Année retenue pour la moyenne du paramètre : Glyphosate de la station
+aBENTAZONE;Année retenue pour la moyenne du paramètre : Bentazone de la station
+aDIFLUFENICANIL;Année retenue pour la moyenne du paramètre : Diflufenicanil de la station
+aCYPRODINIL;Année retenue pour la moyenne du paramètre : Cyprodinil de la station
+aIMIDACLOPRIDE;Année retenue pour la moyenne du paramètre : Imidaclopride de la station
+aIPRODIONE;Année retenue pour la moyenne du paramètre : Iprodione de la station
+aAZOXYSTROBINE;Année retenue pour la moyenne du paramètre : Azoxystrobine de la station
+aTOLUENE;Année retenue pour la moyenne du paramètre : Toluène de la station
+aPHOSPHATETRIB;Année retenue pour la moyenne du paramètre : Phosphate de tributyle de la station
+aBIPHENILE;Année retenue pour la moyenne du paramètre : Biphényle de la station
+aBOSCALID;Année retenue pour la moyenne du paramètre : Boscalid de la station
+aMETALDEHYDE;Année retenue pour la moyenne du paramètre : Métaldéhyde de la station
+aTEBUCONAZOLE;Année retenue pour la moyenne du paramètre :Tebuconazole de la station
+aCHLORPROPHAME;Année retenue pour la moyenne du paramètre : Chlorprophame de la station
+aXYLENE;Année retenue pour la moyenne du paramètre : Xylène de la station
+aPENDIMETHALINE;Année retenue pour la moyenne du paramètre : Pendiméthaline de la station
+aCHLORDECONE;Année retenue pour la moyenne du paramètre : Chlordécone de la station (uniquement en DOM)
+p_o2;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : O2 de la station
+p_sato2;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : Taux de saturation en O2 dissous de la station
+p_dbo5;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : DBO5 de la station
+p_cod;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : COD de la station
+p_po43;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : PO43- de la station
+p_phos;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : Phosphore total de la station
+p_nh4;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : NH4+ de la station
+p_no2;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : NO2- de la station
+p_no3;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : NO3- de la station
+p_tempe;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : Température de la station
+p_phmin;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : pH min de la station
+p_phmax;Pourcentage de prélèvements qui donne la même classe de qualitéparamètre : pH max de la station
+c_o2;Classe de fiabilitéparamètre : O2 de la station
+c_sato2;Classe de fiabilitéparamètre : Taux de saturation en O2 dissous de la station
+c_dbo5;Classe de fiabilitéparamètre : DBO5 de la station
+c_cod;Classe de fiabilitéparamètre : COD de la station
+c_po43;Classe de fiabilitéparamètre : PO43- de la station
+c_phos;Classe de fiabilitéparamètre : Phosphore total de la station
+c_nh4;Classe de fiabilitéparamètre : NH4+ de la station
+c_no2;Classe de fiabilitéparamètre : NO2- de la station
+c_no3;Classe de fiabilitéparamètre : NO3- de la station
+c_tempe;Classe de fiabilitéparamètre : Température de la station
+c_phmin;Classe de fiabilitéparamètre : pH min de la station
+c_phmax;Classe de fiabilitéparamètre : pH max de la station
+CONF_TYPFR;Indique si le TYPEFR est conforme ou vide
+TABME;Libellé des paramètres ou élèments de qualité analysés
+NONQUALIFIE;Station ou masse d'eau non qualifié : nombre
+TRESBON;Station ou masse d'eau en très bon état : nombre
+BON;Station ou masse d'eau en bon état : nombre
+MOYEN;Station ou masse d'eau en état moyen : nombre
+MEDIOCRE;Station ou masse d'eau en état médiocre : nombre
+MAUVAIS;Station ou masse d'eau en état mauvais : nombre
+OUI;"Station ou masse d'eau ayant une condition ""oui"" : nombre"
+NON;"Station ou masse d'eau ayant une condition ""non"" : nombre"
+NB_STAT_TRAITEES;Nombre de stations traitées pour l'état/élèment de qualité/paramètre considéré
+NIVELEVE;Masse d'eau ayant un niveau de confiance élevé : nombre
+NIVMOYEN;Masse d'eau ayant un niveau de confiance moyen : nombre
+NIVFAIBLE;Masse d'eau ayant un niveau de confiance faible : nombre
+%NONQUALIFIE;Station ou masse d'eau non qualifié : pourcentage
+%TRESBON;Station ou masse d'eau en très bon état : pourcentage
+%BON;Station ou masse d'eau en bon état : pourcentage
+%MOYEN;Station ou masse d'eau en état moyen : pourcentage
+%MEDIOCRE;Station ou masse d'eau en état médiocre : pourcentage
+%MAUVAIS;Station ou masse d'eau en état mauvais : pourcentage
+%OUI;"Station ou masse d'eau ayant une condition ""oui"" : pourcentage"
+%NON;"Station ou masse d'eau ayant une condition ""non"" : pourcentage"
+%NIVELEVE;Masse d'eau ayant un niveau de confiance élevé : pourcentage
+%NIVMOYEN;Masse d'eau ayant un niveau de confiance moyen : pourcentage
+%NIVFAIBLE;Masse d'eau ayant un niveau de confiance faible : pourcentage
